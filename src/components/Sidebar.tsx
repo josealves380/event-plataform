@@ -14,8 +14,17 @@ query {
 
 `
 
+interface GetlessonQueryResponse {
+  lesson: {
+    id: string
+    title: string
+    slug: string
+    lessonType: 'live' | 'class'
+  }[]
+}
+
 export function Sidebar() {
-  const { data } = useQuery(GET_LESSON_QUERY)
+  const { data } = useQuery<GetlessonQueryResponse>(GET_LESSON_QUERY)
 
   console.log(data)
   return (
