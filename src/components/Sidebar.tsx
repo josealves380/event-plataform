@@ -19,6 +19,7 @@ interface GetlessonQueryResponse {
     id: string
     title: string
     slug: string
+    availableAt: string
     lessonType: 'live' | 'class'
   }[]
 }
@@ -37,10 +38,10 @@ export function Sidebar() {
        {data?.lesson.map(lesson => {
          return (
           <Lesson
-            title="Aula o1"
-            slug="aula-01"
-            availableAt={new Date()}
-            type="class"
+            title={lesson.title}
+            slug={lesson.slug}
+            availableAt={new Date(lesson.availableAt)}
+            type={lesson.lessonType}
           />
          )
        })} 
