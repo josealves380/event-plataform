@@ -38,6 +38,7 @@ export function Sidebar() {
        {data?.lesson.map(lesson => {
          return (
           <Lesson
+            key={lesson.id}
             title={lesson.title}
             slug={lesson.slug}
             availableAt={new Date(lesson.availableAt)}
