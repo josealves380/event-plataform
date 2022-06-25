@@ -11,11 +11,10 @@ query {
     slug
   }
 }
-
 `
 
-interface GetlessonQueryResponse {
-  lesson: {
+interface GetlessonsQueryResponse {
+  lessons: {
     id: string
     title: string
     slug: string
@@ -25,9 +24,9 @@ interface GetlessonQueryResponse {
 }
 
 export function Sidebar() {
-  const { data } = useQuery<GetlessonQueryResponse>(GET_LESSON_QUERY)
+  const { data } = useQuery<GetlessonsQueryResponse>(GET_LESSON_QUERY)
 
-  console.log(data)
+  
   return (
     <aside className="w-[348px] bg-gray-700 p-6 boder-l border-gray-600">
       <span className="font-bold text-2xl pb-6 mb-6 border-b border-gray-500 block">
@@ -35,7 +34,7 @@ export function Sidebar() {
       </span>
 
       <div className="flex flex-col gap-8">
-       {data?.lesson.map(lesson => {
+       {data?.lessons.map(lesson => {
          return (
           <Lesson
             key={lesson.id}
